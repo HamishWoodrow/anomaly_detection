@@ -10,13 +10,18 @@ As a general suggestion to anomaly detection is you should to get to know your d
 The algorithm computes a moving average based on a certain window size.  The moving average method used implements a simple low pass filter (using discrete linear convolution).  This sounds complicated but it is not so bad (I will upload a blog to explain), it is nicer than rolling average methods which don't deal with boundaries of your data very well (early time data not properly averaged).  
 Then using the moving average as the trend of the data each points deviation from the moving average is calculated and then the generalized extreme Studentized deviate (ESD) test - an extension of the Grubbs test to multiple anomalies - is used to evaluate the actual data points to identify if they are likely to be anomalous dependent on a user set confidence level (alpha).
 
+<img src="anomaly_sunspots.png" alt="Example anomaly detection plot">
+
 ### Python Requirements
 - Python 3
 - Scipy
-- statsmodels
 - numpy
 - pandas
 - matplotlib
+
+### Improvements to be made
+- Treatment of sparse or missing time periods.  At the moment it is believed that the data is continuous.  If for example there are 300 consecutive days of data followed by 60 days of no data and then another 300 days of data, the current implementation will treat the data as 600 consecutive points.  Meaning the trends of the initial 300 days will impact on the events 60 days afterwards.  
+This will be corrected by implementing a gap detector, identifying gaps in the data which are greater than the size of the window.
 
 ### Weakness in Approach
 The use of a moving average is a simplistic approach and masks any continuous underlying trends such time dependent trends where STL methods may be more appropriate.
