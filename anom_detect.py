@@ -3,10 +3,10 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import stats
-%matplotlib inline
+
 
 class anom_detect():
-    '''Anomaly detection for time series data
+    """Anomaly detection for time series data
 
     The method can be used to computed a moving average based on a certain
     window size, using a discrete linear convolution method.  Anomalous Points
@@ -25,7 +25,7 @@ class anom_detect():
         to limit this value to speed up computation.
     alpha : float
         Significance level for ESD test
-    mode :  {‘full’, ‘valid’, ‘same’}, default 'same'
+    mode :  {full, valid, same}, default same
         Method used in linear convolution method for dealing with boundaries
         refer to numpy.convolve for more details regarding methods
 
@@ -41,7 +41,7 @@ class anom_detect():
     ----------
     [1] http://www.itl.nist.gov/div898/handbook/eda/section3/eda35h3.htm
     [2] https://docs.scipy.org/doc/numpy/reference/generated/numpy.convolve.html
-    '''
+    """
     def __init__(self,method='average',window=5,max_outliers=None,alpha=0.05,mode='same'):
         self.method = method
         self.window = window
