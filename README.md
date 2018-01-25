@@ -35,3 +35,5 @@ In addition the use of ESD requires that the data be approximately normally dist
 [3] STL method, http://www.statsmodels.org/stable/generated/statsmodels.tsa.seasonal.seasonal_decompose.html?highlight=seasonal
 
 [4] Introducing practical and robust anomaly detection in a time series, https://blog.twitter.com/engineering/en_us/a/2015/introducing-practical-and-robust-anomaly-detection-in-a-time-series.html
+
+[5] Introduction to Anomaly Detection, https://www.datascience.com/blog/python-anomaly-detection
